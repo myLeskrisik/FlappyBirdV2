@@ -1,8 +1,10 @@
-height = 640
-width = 360
+height = 768
+width = 1366
+nativeHeight = 180
+nativeWidth = 320
 flags =
 {
-  fullscreen = false,
+  fullscreen = true,
   display = 0,
   vsync = 0,
 }
@@ -10,9 +12,10 @@ flags =
 -- Sets the window for the game up by changing the scale in order to make the
 -- game scale properly
 function setupWindow()
-  local nativeHeight = 640
-  local nativeWidth = 360
+  love.graphics.setDefaultFilter("nearest", "nearest")
+  love.window.setMode(width, height, flags)
+end
 
-  love.window.setMode(height, width, flags)
-  love.graphics.scale(height/nativeHeight, width/nativeWidth)
+function setScale()
+  love.graphics.scale(width/nativeWidth, height/nativeHeight)
 end
