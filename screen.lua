@@ -16,6 +16,8 @@ function setupWindow()
   love.window.setMode(width, height, flags)
 end
 
+-- Scales the window to the desired height and width by scale everything
+-- drawn with graphics
 function setScale()
   love.graphics.scale(width/nativeWidth, height/nativeHeight)
 end

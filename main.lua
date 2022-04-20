@@ -1,19 +1,23 @@
 require "screen"
 require "bird"
+require "control"
+gameState = "dead"
 
 function love.load(arg)
+  gameState = "alive"
+
   setupWindow()
   setupBird()
 end
 
 function love.update(dt)
-  updateBird(dt)
+  if gameState == "alive" then
+    updateBird(dt)
+  end
 end
 
 function love.draw()
-  love.graphics.print("yaaa", 50, 50)
   setScale()
-  love.graphics.print("yaaa", 50, 50)
-  
   drawBird()
+
 end
