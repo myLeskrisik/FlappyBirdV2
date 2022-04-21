@@ -18,7 +18,7 @@ function setupBird()
   bird.spritesheet = love.graphics.newImage('img/bird.png')
   local grid = anim8.newGrid(16,16, bird.spritesheet:getWidth(),
                              bird.spritesheet:getHeight())
-  bird.animation = anim8.newAnimation(grid('1-6',1), flapDuration)
+  bird.animation = anim8.newAnimation(grid('1-6',1), flapDuration, "pauseAtStart")
   bird.animation:pauseAtStart()
 end
 
@@ -38,8 +38,6 @@ end
 
 -- Draws the bird on the screen
 function drawBird()
-  frame = bird.animation:getFrameInfo()
-  love.graphics.print(tostring(frame), 180, 90)
   bird.animation:draw(bird.spritesheet, bird.x, bird.y)
 end
 
