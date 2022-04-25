@@ -21,3 +21,8 @@ end
 function setScale()
   love.graphics.scale(width/nativeWidth, height/nativeHeight)
 end
+
+function toggleFullscreen()
+  flags.fullscreen = not flags.fullscreen
+  love.window.setMode(width, height, flags)
+end
