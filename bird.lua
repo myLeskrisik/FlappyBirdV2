@@ -5,7 +5,7 @@ gravity = 75
 -- The constant which dictates how far the bird flys when space is pressed
 liftConst = 65
 -- The duration of the flap animation
-flapDuration = 0.05
+flapDuration = 0.07
 
 -- Sets up the bird table so it is ready to be used after this method is called
 -- and initializes it's sprite/animation
@@ -18,7 +18,7 @@ function setupBird()
   bird.spritesheet = love.graphics.newImage('img/bird.png')
   local grid = anim8.newGrid(16,16, bird.spritesheet:getWidth(),
                              bird.spritesheet:getHeight())
-  bird.animation = anim8.newAnimation(grid('1-6',1), flapDuration)
+  bird.animation = anim8.newAnimation(grid('1-6',1), flapDuration, "pauseAtStart")
   bird.animation:pauseAtStart()
 end
 
@@ -38,8 +38,6 @@ end
 
 -- Draws the bird on the screen
 function drawBird()
-  frame = bird.animation:getFrameInfo()
-  love.graphics.print(tostring(frame), 180, 90)
   bird.animation:draw(bird.spritesheet, bird.x, bird.y)
 end
 
