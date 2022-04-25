@@ -1,6 +1,7 @@
 require "screen"
 require "bird"
 require "control"
+require "world"
 gameState = "dead"
 
 function love.load(arg)
@@ -8,6 +9,7 @@ function love.load(arg)
 
   setupWindow()
   setupBird()
+  setupPipes()
 end
 
 function love.update(dt)
@@ -18,6 +20,8 @@ end
 
 function love.draw()
   setScale()
+  -- Everything should go after this
+  love.graphics.rectangle("fill", 0, 0, nativeWidth, nativeHeight)
   drawBird()
 
 end

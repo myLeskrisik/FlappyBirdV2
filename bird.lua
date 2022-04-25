@@ -26,14 +26,10 @@ end
 -- animation
 function updateBird(dt)
   delta = dt
-
-
   bird.animation:update(dt)
-
-
-  if frame == 6 then bird.animation:pauseAtStart() end
   bird.velocity = bird.velocity - gravity * delta
   bird.y = bird.y - bird.velocity * delta
+  if bird.y < 0 then bird.y = 0 end
 end
 
 -- Draws the bird on the screen
