@@ -11,7 +11,9 @@ flapDuration = 0.07
 -- and initializes it's sprite/animation
 function setupBird()
   bird = {}
-  bird.x = nativeWidth/2
+  bird.width = 16
+  bird.height = 16
+  bird.x = nativeWidth/2 - (bird.width / 2)
   bird.y = nativeHeight/2
   bird.animDur = 0
   bird.velocity = 0
@@ -30,6 +32,10 @@ function updateBird(dt)
   bird.velocity = bird.velocity - gravity * delta
   bird.y = bird.y - bird.velocity * delta
   if bird.y < 0 then bird.y = 0 end
+  if (bird.y + bird.height) > nativeHeight then
+    bird.y = (nativeHeight - bird.height)
+  end
+
 end
 
 -- Draws the bird on the screen

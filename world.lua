@@ -1,7 +1,7 @@
-verticalPipeGap = 45
-horizontalPipeGap = 15
-pipeWidth
-pipeSpeed = 20
+verticalPipeGap = 40
+horizontalPipeGap = 40
+pipeWidth = 28
+pipeSpeed = 26
 maxPipesOnScreen = math.ceil(nativeWidth / (horizontalPipeGap + pipeWidth))
 
 function drawBackground()
@@ -12,12 +12,12 @@ end
 function setupPipes()
   pipes = {}
   for i = 1, maxPipesOnScreen do
-    createPipe(screenWidth + ((i-1) * (horizontalPipeGap + pipeWidth)))
+    createPipe(nativeWidth + ((i-1) * (horizontalPipeGap + pipeWidth)))
   end
 end
 
 function pipeUpdate(dt)
-  for i in pairs(pipes) do pipes[i].x = pipes[i].x - pipeSpeed * dt end
+  for i in pairs(pipes) do pipes[i].x = pipes[i].x - (pipeSpeed * dt) end
   if pipes[1].x <= -pipeWidth then
     for i = 1, maxPipesOnScreen do pipes[i] = pipes[i+1] end
     createPipe(pipes[maxPipesOnScreen - 1].x + (horizontalPipeGap + pipeWidth))
@@ -25,8 +25,8 @@ function pipeUpdate(dt)
 end
 
 function createPipe(pipeStartingX)
-  bottomPipeBound = (screenHeight * 4) / 5
-  topPipeBound = screenHeight / 5 + verticalPipeGap
+  bottomPipeBound = (nativeHeight * 4) / 5
+  topPipeBound = nativeHeight / 5 + verticalPipeGap
   local pipe = {}
   pipe.x = pipeStartingX
   pipe.scored = false
@@ -37,21 +37,15 @@ function createPipe(pipeStartingX)
   table.insert(pipes, pipe)
 end
 
+
 function drawPipes()
-  for i in pairs(pipes) do drawPipe() end
+  for i in pairs(pipes) do drawPipe(pipes[i]) end
 end
 
 function drawPipe(pipe)
-  -- Draws the bottom pipe
-  love.graphics.rectangle("fill", x, bottomPipeY, pipeWidth, screenHeight - bottomPipeY)
-  -- Draws the top pipe
-  love.graphics.rectangle("fill", x, 0, pipeWidth, bottomPipeY - verticalPipeGap)
-
-
-  -- pipes[i].x, pipes[i].bottomPipeY
 
   -- Draws the bottom pipe
-  love.graphics.draw(pipe.sprite, pipe.x, pipe.bottomPipeY, 0, 1, -1)
+  love.graphics.draw(pipe.sprite, pipe.x, pipe.bottomPipeY, 0, 1, 1)
   -- Draws the top pipe
-  love.graphics.draw(pipe.sprite, pipe.x, 0, 0, 1, -1)
+  love.graphics.draw(pipe.sprite, pipe.x, pipe.bottomPipeY - verticalPipeGap, 0, 1, -1)
 end
