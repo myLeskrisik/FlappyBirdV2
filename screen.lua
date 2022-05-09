@@ -1,5 +1,5 @@
-height = 1399
-width = 2559
+height = (1440 - 30)
+width = (2560 - 30)
 nativeHeight = 180
 nativeWidth = 320
 flags = {}

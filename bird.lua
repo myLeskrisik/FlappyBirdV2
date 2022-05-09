@@ -1,9 +1,9 @@
 local anim8 = require "anim8"
 
 -- Determines how fast the bird falls
-gravity = 75
+gravity = 80
 -- The constant which dictates how far the bird flys when space is pressed
-liftConst = 65
+liftConst = 55
 -- The duration of the flap animation
 flapDuration = 0.07
 

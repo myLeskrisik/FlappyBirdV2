@@ -21,9 +21,11 @@ end
 function love.draw()
   setScale()
   -- Everything should go after this
-  love.graphics.setColor(love.math.colorFromBytes(118, 178, 240))
-  love.graphics.rectangle("fill", 0, 0, nativeWidth, nativeHeight)
-  love.graphics.setColor(1, 1, 1)
+  drawBackground()
   drawPipes()
+  love.graphics.setColor(love.math.colorFromBytes(127, 212, 74))
+  love.graphics.rectangle("fill", 0, 160, 320, 20)
+  love.graphics.setColor(1, 1, 1)
+
   drawBird()
 end

@@ -5,8 +5,8 @@ pipeSpeed = 26
 maxPipesOnScreen = math.ceil(nativeWidth / (horizontalPipeGap + pipeWidth))
 
 function drawBackground()
-  love.graphics.setColor(love.math.colorFromBytes(18,190,235))
-  love.graphics.rectangle("fill", 0, 0, screenWidth, screenHeight)
+  background = love.graphics.newImage("img/gasworks.png")
+  love.graphics.draw(background, 0, 0)
 end
 
 function setupPipes()
